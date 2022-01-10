@@ -12,6 +12,8 @@ Basic principles behind this project are:
 
 The script will create two directories within CWD: `tools` and `www`. The [first](#tools) one contains all the tools that will be installed on Kali. The [second](#www) one contains all the scripts and binaries that will be downloaded and may be delivered onto the victim host later.
 
+> All information contained in this repository is provided for educational and research purposes only. The author is not responsible for any misuse of this tool.
+
 ## Usage
 
 WeaponizeKali.sh heavily relies on Python virtual environments and uses [pipx](https://pipxproject.github.io/pipx/) and [poetry](https://python-poetry.org/) to orchestra venvs.
