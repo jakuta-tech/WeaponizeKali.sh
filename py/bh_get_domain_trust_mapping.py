@@ -4,7 +4,7 @@ import csv
 import json
 import glob
 
-with open(glob.glob('[0-9]*_domains.json')[0], 'r') as f:
+with open(glob.glob('[0-9]*_domains.json')[0], 'r', encoding='utf-8-sig') as f:
 	domains = json.load(f)['data']
 
 
@@ -21,9 +21,9 @@ def get_domain_trust_mapping():
 			for trust in domain['Trusts']:
 				row = []
 
-				row.append(source_name.lower()) # SourceName
-				row.append(trust['TargetDomainName'].lower()) # TargetName
-				row.append('WINDOWS_ACTIVE_DIRECTORY') # TrustType
+				row.append(source_name.lower())  # SourceName
+				row.append(trust['TargetDomainName'].lower())  # TargetName
+				row.append('WINDOWS_ACTIVE_DIRECTORY')  # TrustType
 
 				# TrustAttributes
 				if trust['TrustType'] == 'ParentChild':
@@ -35,9 +35,9 @@ def get_domain_trust_mapping():
 				elif trust['TrustType'] == 'Unknown':
 					row.append(None)
 
-				row.append(trust['TrustDirection']) # TrustDirection
-				row.append(None) # WhenCreated
-				row.append(None) # WhenChanged
+				row.append(trust['TrustDirection'])  # TrustDirection
+				row.append(None)  # WhenCreated
+				row.append(None)  # WhenChanged
 
 				writer.writerow(row)
 

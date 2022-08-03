@@ -3,11 +3,11 @@
 """
 Print all node names to console (useful when developing the report).
 
-Example:
-$ bloodhound-print.py {u|c|g|d|all} <QUERY>
+Usage: bloodhound-print.py {u|c|g|d|all} '<QUERY>'
 """
 
-import sys, json
+import sys
+import json
 from pathlib import Path
 from neo4j import GraphDatabase
 
