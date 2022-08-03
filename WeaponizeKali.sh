@@ -1178,6 +1178,15 @@ py() {
 	sudo chmod +x /usr/local/bin/cred_stasher.py
 }
 
+pywsus() {
+	_pushd tools
+	progress "pywsus"
+	cloneRepository "https://github.com/GoSecure/pywsus.git"
+	cd pywsus
+	python3 -m pip install -U -r requirements.txt
+	_popd
+}
+
 pyGPOAbuse() {
 	_pushd tools
 	progress "pyGPOAbuse"
@@ -1543,6 +1552,7 @@ tools() {
 	powerview.py
 	pretender-tools
 	py
+	pywsus
 	pyGPOAbuse
 	pyKerbrute
 	pypykatz
