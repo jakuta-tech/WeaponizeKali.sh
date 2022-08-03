@@ -10,13 +10,13 @@ import sys
 import json
 import glob
 
-with open(glob.glob('[0-9]*_groups.json')[0], 'r') as f:
+with open(glob.glob('[0-9]*_groups.json')[0], 'r', encoding="utf-8-sig") as f:
 	groups = json.load(f)['data']
 
-with open(glob.glob('[0-9]*_users.json')[0], 'r') as f:
+with open(glob.glob('[0-9]*_users.json')[0], 'r', encoding="utf-8-sig") as f:
 	users = json.load(f)['data']
 
-with open(glob.glob('[0-9]*_computers.json')[0], 'r') as f:
+with open(glob.glob('[0-9]*_computers.json')[0], 'r', encoding="utf-8-sig") as f:
 	computers = json.load(f)['data']
 
 
