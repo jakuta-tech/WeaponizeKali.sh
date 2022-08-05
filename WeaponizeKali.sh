@@ -943,6 +943,16 @@ impacket() {
 	_popd
 }
 
+iCULeak.py() {
+	_pushd tools
+	progress "iCULeak.py"
+	cloneRepository "https://github.com/llt4l/iCULeak.py.git"
+	cd iCULeak.py
+	python3 -m pip install .
+	chmod +x iCULeak.py
+	_popd
+}
+
 ipmitool() {
 	progress "ipmitool"
 	installDebPackage "ipmitool"
@@ -1441,6 +1451,11 @@ xc() {
 	_popd
 }
 
+yersina() {
+	progress "yersina"
+	installDebPackage "yersina"
+}
+
 tools() {
 	AutoBlue-MS17-010
 	BloodHound
@@ -1526,6 +1541,7 @@ tools() {
 	httpx
 	impacket
 	ipmitool
+	iCULeak.py
 	kerbrute
 	krbrelayx
 	ldap_shell
@@ -1582,16 +1598,39 @@ tools() {
 	windapsearch
 	wmiexec-RegOut
 	#xc
+	yersina
 }
 
 # -----------------------------------------------------------------------------
 # ------------------------------------ www ------------------------------------
 # -----------------------------------------------------------------------------
 
-ADCSPwn() {
+exe() {
 	_pushd www
-	downloadRelease "bats3c/ADCSPwn" ADCSPwn.exe adcspwn.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SandboxDefender.exe" sandboxdefender.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpDcomTrigger.exe" sharpdcomtrigger.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpEfsTrigger.exe" sharpefstrigger.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpSpoolTrigger.exe" sharpspooltrigger.exe
+	_popd
+}
+
+ps1() {
+	_pushd www
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-ADCSPwn.ps1" invoke-adcspwn.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-KeeTheftSyscalls.ps1" invoke-keetheftsyscalls.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-MirrorDump.ps1" invoke-mirrordump.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-Physmem2profit.ps1" invoke-physmem2profit.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-RunOF.ps1" invoke-runof.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpRdpThiefInjector.ps1" invoke-sharprdpthiefinjector.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpSCCM.ps1" invoke-sharpsccm.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-TokenDuplicator.ps1" invoke-tokenduplicator.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-VeraCryptThiefInjector.ps1" invoke-veracryptthiefinjector.ps1
+	_popd
+}
+
+sys() {
+	_pushd www
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/sys/WinDivert64.sys" windivert64.sys
 	_popd
 }
 
@@ -1728,12 +1767,6 @@ Invoke-ImpersonateUser-PTH() {
 	_popd
 }
 
-Invoke-MirrorDump() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-MirrorDump.ps1" invoke-mirrordump.ps1
-	_popd
-}
-
 Invoke-PSInject() {
 	_pushd www
 	downloadRawFile "https://github.com/EmpireProject/PSInject/raw/master/Invoke-PSInject.ps1" invoke-psinject.ps1
@@ -1751,12 +1784,6 @@ Invoke-PatchWdigest() {
 Invoke-Portscan() {
 	_pushd www
 	downloadRawFile "https://github.com/PowerShellMafia/PowerSploit/raw/master/Recon/Invoke-Portscan.ps1" invoke-portscan.ps1
-	_popd
-}
-
-Invoke-RunOF() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-RunOF.ps1" invoke-runof.ps1
 	_popd
 }
 
@@ -1781,18 +1808,6 @@ Invoke-SMBEnum() {
 Invoke-SMBExec() {
 	_pushd www
 	downloadRawFile "https://github.com/Kevin-Robertson/Invoke-TheHash/raw/master/Invoke-SMBExec.ps1" invoke-smbexec.ps1
-	_popd
-}
-
-Invoke-KeeTheftSyscalls() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-KeeTheftSyscalls.ps1" invoke-keetheftsyscalls.ps1
-	_popd
-}
-
-Invoke-TokenDuplicator() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-TokenDuplicator.ps1" invoke-tokenduplicator.ps1
 	_popd
 }
 
@@ -1861,12 +1876,6 @@ Out-EncryptedScript() {
 
 PEASS() {
 	installDebPackage "peass"
-}
-
-Physmem2profit-www() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-Physmem2profit.ps1" invoke-physmem2profit.ps1
-	_popd
 }
 
 PingCastle() {
@@ -1986,12 +1995,6 @@ Rubeus() {
 	_popd
 }
 
-SandboxDefender() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SandboxDefender.exe" sandboxdefender.exe
-	_popd
-}
-
 Seatbelt() {
 	_pushd www
 	downloadRawFile "https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/raw/master/Seatbelt.exe" seatbelt.exe
@@ -2031,7 +2034,6 @@ SharpHandler() {
 SharpHound() {
 	_pushd www
 	downloadRawFile "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe" sharphound.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/SharpHound.ps1" sharphound.ps1
 	_popd
 }
 
@@ -2054,30 +2056,9 @@ SharpRDP() {
 	_popd
 }
 
-SharpRdpThiefInjector() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpRdpThiefInjector.ps1" invoke-sharprdpthiefinjector.ps1
-	_popd
-}
-
-SharpRelay() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpRelay.exe" sharprelay.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/sys/WinDivert64.sys" windivert64.sys
-	_popd
-}
-
 SharpSecDump() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpSecDump.exe" sharpsecdump.exe
-	_popd
-}
-
-SharpSystemTriggers() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpDcomTrigger.exe" sharpdcomtrigger.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpEfsTrigger.exe" sharpefstrigger.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpSpoolTrigger.exe" sharpspooltrigger.exe
 	_popd
 }
 
@@ -2120,12 +2101,6 @@ SpoolSample() {
 StandIn() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/StandIn.exe" standin.exe
-	_popd
-}
-
-VeraCryptThiefInjector() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-VeraCryptThiefInjector.ps1" invoke-veracryptthiefinjector.ps1
 	_popd
 }
 
@@ -2298,7 +2273,9 @@ suid3num.py() {
 }
 
 www() {
-	ADCSPwn
+	exe
+	ps1
+	sys
 	ADRecon
 	ADSearch
 	ASREPRoast
@@ -2318,17 +2295,13 @@ www() {
 	Invoke-ACLPwn
 	Invoke-ConPtyShell
 	Invoke-ImpersonateUser-PTH
-	Invoke-MirrorDump
 	Invoke-PSInject
 	Invoke-PatchWdigest
 	Invoke-Portscan
-	Invoke-RunOF
 	Invoke-RunasCs
 	Invoke-SMBClient
 	Invoke-SMBEnum
 	Invoke-SMBExec
-	Invoke-KeeTheftSyscalls
-	Invoke-TokenDuplicator
 	Invoke-WMIExec
 	Invoke-noPac
 	JAWS
@@ -2340,7 +2313,6 @@ www() {
 	OffensivePythonPipeline
 	Out-EncryptedScript
 	PEASS
-	Physmem2profit-www
 	PingCastle
 	PowerShellArmoury
 	PowerUp
@@ -2359,7 +2331,6 @@ www() {
 	RemotePotato0
 	RoguePotato
 	Rubeus
-	SandboxDefender
 	Seatbelt
 	SessionGopher
 	SharpChrome
@@ -2370,8 +2341,6 @@ www() {
 	SharpLAPS
 	SharpNamedPipePTH
 	SharpRDP
-	SharpRdpThiefInjector
-	SharpRelay
 	SharpSecDump
 	SharpView
 	SharpWMI
@@ -2380,7 +2349,6 @@ www() {
 	Snaffler
 	SpoolSample
 	StandIn
-	VeraCryptThiefInjector
 	WerTrigger
 	WinPwn
 	Wireshark
