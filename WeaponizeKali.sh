@@ -518,13 +518,14 @@ Obsidian() {
 }
 
 PCredz() {
-	_pushd tools
+	#_pushd tools
 	progress "PCredz"
-	installDebPackage "libpcap-dev"
-	cloneRepository "https://github.com/lgandx/PCredz.git"
-	python3 -m pip install -U Cython
-	python3 -m pip install -U python-libpcap
-	_popd
+	docker pull snovvcrash/pcredz
+	#installDebPackage "libpcap-dev"
+	#cloneRepository "https://github.com/lgandx/PCredz.git"
+	#python3 -m pip install -U Cython
+	#python3 -m pip install -U python-libpcap
+	#_popd
 }
 
 PEzor() {
@@ -938,6 +939,8 @@ impacket() {
 	_pushd tools
 	progress "impacket-src"
 	cloneRepository "https://github.com/SecureAuthCorp/impacket.git"
+	progress "impacket-ShutdownRepo"
+	cloneRepository "https://github.com/ShutdownRepo/impacket.git" impacket-ShutdownRepo
 	progress "impacket-snovvcrash"
 	cloneRepository "https://github.com/snovvcrash/impacket.git" impacket-snovvcrash
 	_popd
@@ -1608,9 +1611,6 @@ tools() {
 exe() {
 	_pushd www
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SandboxDefender.exe" sandboxdefender.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpDcomTrigger.exe" sharpdcomtrigger.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpEfsTrigger.exe" sharpefstrigger.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpSpoolTrigger.exe" sharpspooltrigger.exe
 	_popd
 }
 
@@ -1621,8 +1621,11 @@ ps1() {
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-MirrorDump.ps1" invoke-mirrordump.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-Physmem2profit.ps1" invoke-physmem2profit.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-RunOF.ps1" invoke-runof.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpDcomTrigger.ps1" invoke-sharpdcomtrigger.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpEfsTrigger.ps1" invoke-sharpefstrigger.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpRdpThiefInjector.ps1" invoke-sharprdpthiefinjector.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpSCCM.ps1" invoke-sharpsccm.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpSpoolTrigger.ps1" invoke-sharpspooltrigger.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-TokenDuplicator.ps1" invoke-tokenduplicator.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-VeraCryptThiefInjector.ps1" invoke-veracryptthiefinjector.ps1
 	_popd
@@ -2033,7 +2036,9 @@ SharpHandler() {
 
 SharpHound() {
 	_pushd www
-	downloadRawFile "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe" sharphound.exe
+	downloadRelease "BloodHoundAD/SharpHound" "SharpHound.*[0-9].zip" sharphound.zip
+	unzip -q sharphound.zip
+	rm SharpHound.exe.config SharpHound.pdb System.Console.dll System.Diagnostics.Tracing.dll System.Net.Http.dll sharphound.zip
 	_popd
 }
 
