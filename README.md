@@ -29,7 +29,7 @@ Now you can download WeaponizeKali.sh and run it from your home directory (pip m
 
 ```console
 ~$ cd
-~$ bash <(curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh) -idtw
+~$ bash <(curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/WeaponizeKali.sh) -cidtw
 ~$ ls -la tools www
 ```
 
@@ -53,7 +53,7 @@ To execute WeaponizeKali.sh with full set of arguments again after it has alread
 ~$ cd
 ~$ pipx uninstall-all
 ~$ sudo rm -rf ~/{.local/pipx,tools,www}
-~$ ./WeaponizeKali.sh -idtw
+~$ ./WeaponizeKali.sh -cidtw
 ```
 
 ### Help
@@ -75,6 +75,7 @@ _(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_) _ ((_))(_)) _ ((_)    )\ (
 usage: WeaponizeKali.sh [-h] [-i] [-d] [-t] [w]
 
 optional arguments:
+  -c                    use Docker when installing tools if possible
   -h                    show this help message and exit
   -i                    initialize filesystem (re-create ./tools and ./www directories)
   -d                    resolve dependencies

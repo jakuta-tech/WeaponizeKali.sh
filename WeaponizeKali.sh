@@ -518,14 +518,17 @@ Obsidian() {
 }
 
 PCredz() {
-	#_pushd tools
 	progress "PCredz"
-	docker pull snovvcrash/pcredz
-	#installDebPackage "libpcap-dev"
-	#cloneRepository "https://github.com/lgandx/PCredz.git"
-	#python3 -m pip install -U Cython
-	#python3 -m pip install -U python-libpcap
-	#_popd
+	if [[ "$use_docker" ]]; then
+		docker pull snovvcrash/pcredz
+	else
+		_pushd tools
+		installDebPackage "libpcap-dev"
+		cloneRepository "https://github.com/lgandx/PCredz.git"
+		python3 -m pip install -U Cython
+		python3 -m pip install -U python-libpcap
+		_popd
+	fi
 }
 
 PEzor() {
@@ -1186,6 +1189,9 @@ py() {
 
 	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bloodhound-print.py' /usr/local/bin/bloodhound-print.py"
 	sudo chmod +x /usr/local/bin/bloodhound-print.py
+
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/parse_esc1.py' /usr/local/bin/parse_esc1.py"
+	sudo chmod +x /usr/local/bin/parse_esc1.py
 
 	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/cred_stasher.py' /usr/local/bin/cred_stasher.py"
 	sudo chmod +x /usr/local/bin/cred_stasher.py
@@ -2395,8 +2401,11 @@ help() {
 # ----------------------------------- Main ------------------------------------
 # -----------------------------------------------------------------------------
 
-while getopts "hidtw" opt; do
+while getopts "chidtw" opt; do
 	case "$opt" in
+	c)
+		use_docker=1
+		;;
 	h)
 		call_help=1
 		;;
