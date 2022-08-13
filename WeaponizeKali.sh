@@ -647,6 +647,15 @@ ShellPop() {
 	_popd
 }
 
+Shhhloader() {
+	_pushd tools
+	progress "Shhhloader"
+	cloneRepository "https://github.com/icyguider/Shhhloader.git"
+	cd Shhhloader
+	python3 randomize_sw2_seed.py
+	_popd
+}
+
 Sliver() {
 	progress "Sliver"
 	curl https://sliver.sh/install | sudo bash
@@ -657,7 +666,7 @@ TrustVisualizer() {
 	progress "TrustVisualizer"
 	cloneRepository "https://github.com/snovvcrash/TrustVisualizer.git"
 	cd TrustVisualizer
-	python2 -m pip install -U -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 	_popd
 }
 
@@ -1513,6 +1522,7 @@ tools() {
 	SharpGen
 	ShellPop
 	WebclientServiceScanner
+	Shhhloader
 	Sliver
 	TrustVisualizer
 	Windows-Exploit-Suggester

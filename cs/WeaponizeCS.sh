@@ -94,10 +94,35 @@ downloadRelease() {
 # ---------------------------------- Scripts ----------------------------------
 # -----------------------------------------------------------------------------
 
+AceLdr() {
+	_pushd Scripts
+	progress "AceLdr"
+	cloneRepository "https://github.com/kyleavery/AceLdr.git"
+	cd AceLdr
+	make
+	_popd
+}
+
+BOF-RegSave() {
+	_pushd Scripts
+	progress "BOF-RegSave"
+	cloneRepository "https://github.com/EncodeGroup/BOF-RegSave.git"
+	cd BOF-RegSave
+	make
+	_popd
+}
+
 BOFs() {
 	_pushd Scripts
 	progress "BOFs"
 	cloneRepository "https://github.com/ajpc500/BOFs.git"
+	_popd
+}
+
+BeaconDownloadSync() {
+	_pushd Scripts
+	progress "BeaconDownloadSync"
+	cloneRepository "https://github.com/EspressoCake/BeaconDownloadSync.git"
 	_popd
 }
 
@@ -112,6 +137,8 @@ BokuLoader() {
 	_pushd Scripts
 	progress "BokuLoader"
 	cloneRepository "https://github.com/boku7/BokuLoader.git"
+	cd BokuLoader
+	make
 	_popd
 }
 
@@ -126,6 +153,8 @@ CS-Remote-OPs-BOF() {
 	_pushd Scripts
 	progress "CS-Remote-OPs-BOF"
 	cloneRepository "https://github.com/trustedsec/CS-Remote-OPs-BOF.git"
+	cd CS-Remote-OPs-BOF/BOF
+	make
 	_popd
 }
 
@@ -133,8 +162,18 @@ CS-Situational-Awareness-BOF() {
 	_pushd Scripts
 	progress "CS-Situational-Awareness-BOF"
 	cloneRepository "https://github.com/trustedsec/CS-Situational-Awareness-BOF.git"
-	#cd CS-Situational-Awareness-BOF
-	#./make_all.sh
+	cd CS-Situational-Awareness-BOF
+	./make_all.sh
+	_popd
+}
+
+Chisel-Strike() {
+	_pushd Scripts
+	progress "CS-Situational-Awareness-BOF"
+	cloneRepository "https://github.com/m3rcer/Chisel-Strike.git"
+	cd Chisel-Strike
+	chmod +x -R chisel-modules
+	chmod +x -R tools
 	_popd
 }
 
@@ -142,6 +181,8 @@ DInjector() {
 	_pushd Scripts
 	progress "DInjector"
 	cloneRepository "https://github.com/snovvcrash/DInjector.git"
+	cd DInjector
+	git checkout dev
 	_popd
 }
 
@@ -149,6 +190,18 @@ DelegationBOF() {
 	_pushd Scripts
 	progress "DelegationBOF"
 	cloneRepository "https://github.com/IcebreakerSecurity/DelegationBOF.git"
+	cd DelegationBOF
+	make
+	_popd
+}
+
+ExecuteAssembly() {
+	_pushd Scripts
+	progress "ExecuteAssembly"
+	cloneRepository "https://github.com/med0x2e/ExecuteAssembly.git"
+	cd ExecuteAssembly
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/dll/ExecuteAssembly-x64.dll" ExecuteAssembly-x64.dll
+	make
 	_popd
 }
 
@@ -156,6 +209,8 @@ FindObjects-BOF() {
 	_pushd Scripts
 	progress "FindObjects-BOF"
 	cloneRepository "https://github.com/outflanknl/FindObjects-BOF.git"
+	cd FindObjects-BOF
+	make
 	_popd
 }
 
@@ -191,6 +246,8 @@ PersistBOF() {
 	_pushd Scripts
 	progress "PersistBOF"
 	cloneRepository "https://github.com/IcebreakerSecurity/PersistBOF.git"
+	cd PersistBOF
+	make
 	_popd
 }
 
@@ -216,10 +273,28 @@ SyscallPack() {
 	_popd
 }
 
+SysmonQuiet() {
+	_pushd Scripts
+	progress "SysmonQuiet"
+	cloneRepository "https://github.com/ScriptIdiot/SysmonQuiet.git"
+	_popd
+}
+
+cs-token-vault() {
+	_pushd Scripts
+	progress "cs-token-vault"
+	cloneRepository "https://github.com/Henkru/cs-token-vault.git"
+	cd cs-token-vault
+	make all
+	_popd
+}
+
 freeBokuLoader() {
 	_pushd Scripts
 	progress "freeBokuLoader"
 	cloneRepository "https://github.com/S4ntiagoP/freeBokuLoader.git"
+	cd freeBokuLoader
+	make
 	_popd
 }
 
@@ -227,6 +302,8 @@ inject-assembly() {
 	_pushd Scripts
 	progress "inject-assembly"
 	cloneRepository "https://github.com/kyleavery/inject-assembly.git"
+	cd inject-assembly
+	make
 	_popd
 }
 
@@ -234,6 +311,17 @@ injectAmsiBypass() {
 	_pushd Scripts
 	progress "injectAmsiBypass"
 	cloneRepository "https://github.com/boku7/injectAmsiBypass.git"
+	cd injectAmsiBypass
+	x86_64-w64-mingw32-gcc -c inject-amsiBypass.c -o inject-amsiBypass.o
+	_popd
+}
+
+injectEtwBypass() {
+	_pushd Scripts
+	progress "injectEtwBypass"
+	cloneRepository "https://github.com/boku7/injectEtwBypass.git"
+	cd injectEtwBypass
+	bash compile.sh
 	_popd
 }
 
@@ -245,14 +333,19 @@ nanodump() {
 }
 
 Scripts() {
+	AceLdr
+	BOF-RegSave
 	BOFs
+	BeaconDownloadSync
 	BofRoast
 	BokuLoader
 	C2-Tool-Collection
 	CS-Remote-OPs-BOF
 	CS-Situational-Awareness-BOF
+	Chisel-Strike
 	DInjector
 	DelegationBOF
+	ExecuteAssembly
 	FindObjects-BOF
 	HelpColor
 	InlineExecute-Assembly
@@ -262,9 +355,11 @@ Scripts() {
 	PortBender
 	RdpThief
 	SyscallPack
+	cs-token-vault
 	freeBokuLoader
 	inject-assembly
 	injectAmsiBypass
+	injectEtwBypass
 	nanodump
 }
 
@@ -279,6 +374,14 @@ BC-SECURITY-Malleable-C2-Profiles() {
 	_popd
 }
 
+C2concealer() {
+	_pushd Profiles
+	progress "C2concealer"
+	cloneRepository "https://github.com/FortyNorthSecurity/C2concealer.git"
+	python3 -m pip install .
+	_popd
+}
+
 CobaltNotion() {
 	_pushd Profiles
 	progress "CobaltNotion"
@@ -286,10 +389,27 @@ CobaltNotion() {
 	_popd
 }
 
+SourcePoint() {
+	_pushd Profiles
+	progress "SourcePoint"
+	mkdir SourcePoint
+	eget -qs linux/amd64 Tylous/SourcePoint --to SourcePoint
+	_popd
+}
+
 minimal-defender-bypass() {
 	_pushd Profiles
 	progress "minimal-defender-bypass"
 	cloneRepository "https://gist.github.com/tothi/8abd2de8f4948af57aa2d027f9e59efe.git" minimal-defender-bypass
+	_popd
+}
+
+random_c2_profile() {
+	_pushd Profiles
+	progress "random_c2_profile"
+	cloneRepository "https://github.com/threatexpress/random_c2_profile.git"
+	cd random_c2_profile
+	python3 -m pip install -r requirements.txt
 	_popd
 }
 
@@ -302,8 +422,11 @@ threatexpress-malleable-c2() {
 
 Profiles() {
 	BC-SECURITY-Malleable-C2-Profiles
+	C2concealer
 	CobaltNotion
+	SourcePoint
 	minimal-defender-bypass
+	random_c2_profile
 	threatexpress-malleable-c2
 }
 

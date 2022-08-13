@@ -7,15 +7,19 @@ bash <(curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cs/W
 
 ## `Scripts/`
 
+* [x] [AceLdr](https://github.com/kyleavery/AceLdr)
+* [x] [BOF-RegSave](https://github.com/EncodeGroup/BOF-RegSave)
 * [x] [BOFs](https://github.com/ajpc500/BOFs)
+* [x] [BeaconDownloadSync](https://github.com/EspressoCake/BeaconDownloadSync)
 * [x] [BofRoast](https://github.com/cube0x0/BofRoast)
 * [x] [BokuLoader](https://github.com/boku7/BokuLoader)
 * [x] [C2-Tool-Collection](https://github.com/outflanknl/C2-Tool-Collection)
 * [x] [CS-Remote-OPs-BOF](https://github.com/trustedsec/CS-Remote-OPs-BOF)
 * [x] [CS-Situational-Awareness-BOF](https://github.com/trustedsec/CS-Situational-Awareness-BOF)
+* [x] [Chisel-Strike](https://github.com/m3rcer/Chisel-Strike)
 * [x] [DInjector](https://github.com/snovvcrash/DInjector)
 * [x] [DelegationBOF](https://github.com/IcebreakerSecurity/DelegationBOF)
-* [ ] [ExecuteAssembly](https://github.com/med0x2e/ExecuteAssembly)
+* [x] [ExecuteAssembly](https://github.com/med0x2e/ExecuteAssembly)
 * [x] [FindObjects-BOF](https://github.com/outflanknl/FindObjects-BOF)
 * [x] [HelpColor](https://github.com/outflanknl/HelpColor)
 * [x] [InlineExecute-Assembly](https://github.com/anthemtotheego/InlineExecute-Assembly)
@@ -25,9 +29,12 @@ bash <(curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cs/W
 * [x] [PortBender](https://github.com/praetorian-inc/PortBender) · [DLL](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/dll/PortBender64.dll)
 * [x] [RdpThief](https://github.com/0x09AL/RdpThief)
 * [x] [SyscallPack](https://github.com/cube0x0/SyscallPack)
+* [x] [SysmonQuiet](https://github.com/ScriptIdiot/SysmonQuiet)
+* [x] [cs-token-vault](https://github.com/Henkru/cs-token-vault)
 * [x] [freeBokuLoader](https://github.com/S4ntiagoP/freeBokuLoader)
 * [x] [inject-assembly](https://github.com/kyleavery/inject-assembly)
 * [x] [injectAmsiBypass](https://github.com/boku7/injectAmsiBypass)
+* [x] [injectEtwBypass](https://github.com/boku7/injectEtwBypass)
 * [x] [nanodump](https://github.com/helpsystems/nanodump)
 
 ## `Profiles/`
@@ -39,11 +46,12 @@ bash <(curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cs/W
 
 ### Generators
 
-* [ ] [SourcePoint](https://github.com/Tylous/SourcePoint)
-* [ ] [C2concealer](https://github.com/FortyNorthSecurity/C2concealer)
-* [ ] [random_c2_profile](https://github.com/threatexpress/random_c2_profile)
+* [x] [SourcePoint](https://github.com/Tylous/SourcePoint)
+* [x] [C2concealer](https://github.com/FortyNorthSecurity/C2concealer)
+* [x] [random_c2_profile](https://github.com/threatexpress/random_c2_profile)
 
 ## Resources, Collections & Stuff
 
 * [Cobalt Strike Community Kit](https://cobalt-strike.github.io/community_kit/)
 * [CobaltStrike_BOF_Collections](https://github.com/wsummerhill/CobaltStrike_BOF_Collections)
+* [RedWarden](https://github.com/mgeeky/RedWarden)

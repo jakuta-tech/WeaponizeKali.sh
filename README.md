@@ -168,6 +168,7 @@ Get a random name of a `.exe` or `.dll` binary:
 * [x] [ShadowCoerce](https://github.com/ShutdownRepo/ShadowCoerce)
 * [x] [SharpGen](https://github.com/cobbr/SharpGen)
 * [x] [ShellPop](https://github.com/0x00-0x00/ShellPop)
+* [x] [Shhhloader](https://github.com/icyguider/Shhhloader)
 * [x] [Sliver](https://github.com/BishopFox/sliver)
 * [x] [TrustVisualizer](https://github.com/snovvcrash/TrustVisualizer)
 * [x] [WebclientServiceScanner](https://github.com/Hackndo/WebclientServiceScanner)
