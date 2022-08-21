@@ -1,8 +1,8 @@
 WeaponizeCS.sh
 ==========
 
-```bash
-bash <(curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cs/WeaponizeCS.sh)
+```console
+~$ bash <(curl -sL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cs/WeaponizeCS.sh)
 ```
 
 ## `Scripts/`

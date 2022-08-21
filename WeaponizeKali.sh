@@ -1187,6 +1187,9 @@ pretender-tools() {
 py() {
 	FUNC=$(declare -f downloadRawFile)
 
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/assembly_to_pwsh.py' /usr/local/bin/assembly_to_pwsh.py"
+	sudo chmod +x /usr/local/bin/assembly_to_pwsh.py
+
 	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bh_get_ad_group_member.py' /usr/local/bin/bh_get_ad_group_member.py"
 	sudo chmod +x /usr/local/bin/bh_get_ad_group_member.py
 

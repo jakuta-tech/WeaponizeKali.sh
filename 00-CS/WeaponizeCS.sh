@@ -4,8 +4,27 @@ nocolor="\033[0m"
 green="\033[0;32m"
 yellow="\033[0;33m"
 red="\033[0;31m"
+red_bold="\033[1;31m"
 blue="\033[0;34m"
+light_gray="\033[0;37m"
+dark_gray="\033[1;30m"
 magenta_bold="\033[1;35m"
+
+SITE="https://github.com/penetrarnya-tm/WeaponizeKali.sh/tree/main/00-CS"
+VERSION="0.1.5"
+
+echo -e "${red_bold}                                                            (${nocolor}"
+echo -e "${red_bold} (  (                                                  (    )\ )           )${nocolor}"
+echo -e "${red_bold} )\))(   '   (     )                    (         (    )\  (()/(        ( /(${nocolor}"
+echo -e "${red_bold}((_)()\ )   ))\ ( /(  \`  )    (    (    )\  (    ))\ (((_)  /(_))   (   )\())${nocolor}"
+echo -e "${red_bold}_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_))\___ (_))     )\ ((_)\ ${nocolor}"
+echo -e "${light_gray}\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_)) ((/ __|/ __|   ((_)| |(_)${nocolor}"
+echo -e "${light_gray} \ \/\/ / / -_)/ _\` || '_ \)/ _ \| ' \))| ||_ // -_) | (__ \__ \ _ (_-<| ' \ ${nocolor}"
+echo -e "${light_gray}  \_/\_/  \___|\__,_|| .__/ \___/|_||_| |_|/__|\___|  \___||___/(_)/__/|_||_|${nocolor}"
+echo -e "${light_gray}                     |_|${nocolor}"
+echo    "                                    adversary simulation? red team operation?"
+echo -e "${magenta_bold}{${dark_gray} ${SITE} ${magenta_bold}} ${magenta_bold}{${dark_gray} v${VERSION} ${magenta_bold}}${nocolor}"
+echo
 
 # -----------------------------------------------------------------------------
 # ----------------------------------- Init ------------------------------------
