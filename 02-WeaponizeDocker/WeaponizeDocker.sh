@@ -16,14 +16,14 @@ VERSION="0.1.0"
 echo -e "${red_bold}                                                      (${nocolor}"
 echo -e "${red_bold} (  (                                                 )\ )                )                      )${nocolor}"
 echo -e "${red_bold} )\))(   '   (     )                    (         (  (()/(             ( /(    (   (          ( /(${nocolor}"
-echo -e "${red_bold}((_)()\ )   ))\ ( /(  \`  )    (    (    )\  (    ))\  /(_))   (    (   )\())  ))\  )(     (   )\()) $)\())${nocolor}"
+echo -e "${red_bold}((_)()\ )   ))\ ( /(  \`  )    (    (    )\  (    ))\  /(_))   (    (   )\())  ))\  )(     (   )\())${nocolor}"
 echo -e "${red_bold}_(())\_)() /((_))(_)) /(/(    )\   )\ )((_) )\  /((_)(_))_    )\   )\ ((_)\  /((_)(()\    )\ ((_)\ ${nocolor}"
-echo -e "${light_gray}\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))   |   \  ((_) ((_)| |(_)(_))   ((_)  ((_)| |(_)$(_)${nocolor}"
+echo -e "${light_gray}\ \((_)/ /(_)) ((_)_ ((_)_\  ((_) _(_/( (_)((_)(_))   |   \  ((_) ((_)| |(_)(_))   ((_)  ((_)| |(_)${nocolor}"
 echo -e "${light_gray} \ \/\/ / / -_)/ _\` || '_ \)/ _ \| ' \))| ||_ // -_)  | |) |/ _ \/ _| | / / / -_) | '_|_ (_-<| ' \ ${nocolor}"
 echo -e "${light_gray}  \_/\_/  \___|\__,_|| .__/ \___/|_||_| |_|/__|\___|  |___/ \___/\__| |_\_\ \___| |_| (_)/__/|_||_|${nocolor}"
 echo -e "${light_gray}                     |_|${nocolor}"
-echo    "                                    adversary simulation? red team operation?"
-echo -e "${magenta_bold}{${dark_gray} ${SITE} ${magenta_bold}} ${magenta_bold}{${dark_gray} v${VERSION} ${magenta_bold}}${nocolor}"
+echo    "                                                                                     are u a whale?"
+echo -e "     ${magenta_bold}{${dark_gray} ${SITE} ${magenta_bold}} ${magenta_bold}{${dark_gray} v${VERSION} ${magenta_bold}}${nocolor}"
 echo
 
 # -----------------------------------------------------------------------------
