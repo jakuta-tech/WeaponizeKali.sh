@@ -7,6 +7,7 @@ Install within the [Exegol](https://github.com/ShutdownRepo/Exegol) [image](http
 ~$ git clone https://github.com/ShutdownRepo/Exegol-images
 ~$ cd Exegol-images
 ~$ curl -sSL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/02-WeaponizeDocker/cloud.dockerfile > cloud.dockerfile
+~$ curl -sSL https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/02-WeaponizeDocker/WeaponizeDocker.sh > WeaponizeDocker.sh
 ~$ docker build -t exegol . -f cloud.dockerfile
 ```
 
