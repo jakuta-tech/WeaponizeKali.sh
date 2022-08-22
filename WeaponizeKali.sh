@@ -148,15 +148,15 @@ _jq() {
 
 _eget() {
 	_pushd /tmp
-	curl https://zyedidia.github.io/eget.sh | sh
+	curl "https://zyedidia.github.io/eget.sh" | sh
 	sudo mkdir /opt/eget
 	sudo mv eget /opt/eget
-	sudo ln -sv /opt/eget/eget /usr/local/bin/eget
+	sudo ln -sv "/opt/eget/eget" /usr/local/bin/eget
 	_popd
 }
 
 _python2() {
-	curl -sS https://bootstrap.pypa.io/pip/2.7/get-pip.py | sudo python2
+	curl -sS "https://bootstrap.pypa.io/pip/2.7/get-pip.py" | sudo python2
 	installDebPackage "python2-dev"
 	installPipPackage 2 "setuptools"
 }
@@ -165,7 +165,7 @@ _python3() {
 	installDebPackage "python3-pip python3-venv python3-dev"
 	installPipPackage 3 "setuptools pipx"
 	pipx ensurepath
-	curl -sSL https://install.python-poetry.org | python3 -
+	curl -sSL "https://install.python-poetry.org" | python3 -
 }
 
 _krb5() {
@@ -192,9 +192,9 @@ _snap() {
 
 _dotnet() {
 	# For Covenant
-	curl -sSL https://dot.net/v1/dotnet-install.sh | sudo bash /dev/stdin -Channel 3.1
+	curl -sSL "https://dot.net/v1/dotnet-install.sh" | sudo bash /dev/stdin -Channel 3.1
 	# For SharpGen
-	curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -Channel 2.1
+	curl -sSL "https://dot.net/v1/dotnet-install.sh" | bash /dev/stdin -Channel 2.1
 }
 
 dependencies() {
@@ -489,7 +489,7 @@ Neo-reGeorg() {
 Nim() {
 	progress "Nim"
 	installDebPackage "mingw-w64" # "nim"
-	curl https://nim-lang.org/choosenim/init.sh -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
+	curl "https://nim-lang.org/choosenim/init.sh" -sSf | CHOOSENIM_NO_ANALYTICS=1 sh
 }
 
 Nimcrypt2() {
@@ -578,7 +578,7 @@ Physmem2profit-tools() {
 
 PoshC2() {
 	progress "PoshC2"
-	#curl -sSL https://github.com/nettitude/PoshC2/raw/dev/Install.sh | sudo bash -s -- -p /opt/PoshC2 -b dev
+	#curl -sSL "https://github.com/nettitude/PoshC2/raw/dev/Install.sh" | sudo bash -s -- -p /opt/PoshC2 -b dev
 	installDebPackage "poshc2"
 }
 
@@ -600,7 +600,7 @@ Responder() {
 
 RustScan() {
 	progress "RustScan"
-	eget -t 2.0.1 -a amd64 RustScan/RustScan --to /tmp/rustscan.deb
+	eget -t 2.0.1 -a amd64 "RustScan/RustScan" --to /tmp/rustscan.deb
 	sudo dpkg -i /tmp/rustscan.deb
 	rm /tmp/rustscan.deb
 	sudo wget https://gist.github.com/snovvcrash/8b85b900bd928493cd1ae33b2df318d8/raw/fe8628396616c4bf7a3e25f2c9d1acc2f36af0c0/rustscan-ports-top1000.toml -O /root/.rustscan.toml
@@ -658,7 +658,7 @@ Shhhloader() {
 
 Sliver() {
 	progress "Sliver"
-	curl https://sliver.sh/install | sudo bash
+	curl "https://sliver.sh/install" | sudo bash
 }
 
 TrustVisualizer() {
@@ -686,7 +686,7 @@ Windows-Exploit-Suggester() {
 
 ZeroTier() {
 	progress "ZeroTier"
-	curl -s https://install.zerotier.com | sudo bash
+	curl -s "https://install.zerotier.com" | sudo bash
 }
 
 aced() {
@@ -749,7 +749,7 @@ bettercap() {
 	installDebPackage "libpcap-dev libusb-1.0-0-dev libnetfilter-queue-dev"
 	mkdir bettercap
 	cd bettercap
-	eget -t v2.31.1 -qs linux/amd64 bettercap/bettercap
+	eget -t v2.31.1 -qs linux/amd64 "bettercap/bettercap"
 	sudo ./bettercap -eval "caplets.update; ui.update; q"
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cap/arpspoof.cap" arpspoof.cap
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cap/wsus.cap" wsus.cap
@@ -758,7 +758,7 @@ bettercap() {
 
 bloodhound-import() {
 	progress "bloodhound-import"
-	pipx install -f 'git+https://github.com/fox-it/bloodhound-import.git'
+	pipx install -f "git+https://github.com/fox-it/bloodhound-import.git"
 }
 
 bloodhound-quickwin() {
@@ -813,7 +813,7 @@ dnsx() {
 	_pushd tools
 	progress "dnsx"
 	mkdir dnsx
-	eget -qs linux/amd64 projectdiscovery/dnsx --to dnsx
+	eget -qs linux/amd64 "projectdiscovery/dnsx" --to dnsx
 	_popd
 }
 
@@ -889,16 +889,6 @@ gateway-finder-imp() {
 	_popd
 }
 
-gitjacker() {
-	_pushd tools
-	progress "gitjacker"
-	mkdir gitjacker
-	cd gitjacker
-	downloadRelease "liamg/gitjacker" gitjacker-linux-amd64 gitjacker
-	chmod +x gitjacker
-	_popd
-}
-
 go-windapsearch() {
 	_pushd tools
 	progress "go-windapsearch"
@@ -934,14 +924,14 @@ hoaxshell() {
 
 http-server() {
 	progress "http-server"
-	sudo npm install http-server -g
+	sudo npm install -g http-server
 }
 
 httpx() {
 	_pushd tools
 	progress "httpx"
 	mkdir httpx
-	eget -qs linux/amd64 projectdiscovery/httpx --to httpx
+	eget -qs linux/amd64 "projectdiscovery/httpx" --to httpx
 	_popd
 }
 
@@ -1045,7 +1035,7 @@ mapcidr() {
 	_pushd tools
 	progress "mapcidr"
 	mkdir mapcidr
-	eget -qs linux/amd64 projectdiscovery/mapcidr --to mapcidr
+	eget -qs linux/amd64 "projectdiscovery/mapcidr" --to mapcidr
 	_popd
 }
 
@@ -1180,7 +1170,7 @@ pretender-tools() {
 	_pushd tools
 	progress "pretender"
 	mkdir pretender
-	eget -qs linux/amd64 RedTeamPentesting/pretender --to pretender
+	eget -qs linux/amd64 "RedTeamPentesting/pretender" --to pretender
 	_popd
 }
 
@@ -1286,7 +1276,7 @@ revsocks-server() {
 	_pushd tools
 	progress "revsocks"
 	mkdir revsocks
-	eget -qs linux/amd64 kost/revsocks --to revsocks
+	eget -qs linux/amd64 "kost/revsocks" --to revsocks
 	_popd
 }
 
@@ -1529,7 +1519,7 @@ tools() {
 	Sliver
 	TrustVisualizer
 	Windows-Exploit-Suggester
-	ZeroTier
+	#ZeroTier
 	aced
 	#ack3
 	aclpwn.py
@@ -2232,7 +2222,7 @@ netcat-win() {
 
 pamspy() {
 	_pushd www
-	eget -q citronneur/pamspy --to pamspy
+	eget -q "citronneur/pamspy" --to pamspy
 	_popd
 }
 
@@ -2250,9 +2240,9 @@ powercat() {
 
 pretender-www() {
 	_pushd www
-	eget -qs linux/amd64 RedTeamPentesting/pretender --to pretender
+	eget -qs linux/amd64 "RedTeamPentesting/pretender" --to pretender
 	chmod -x pretender
-	eget -qs windows/amd64 RedTeamPentesting/pretender --to pretender.exe
+	eget -qs windows/amd64 "RedTeamPentesting/pretender" --to pretender.exe
 	chmod -x pretender.exe
 	_popd
 }
@@ -2277,9 +2267,9 @@ rdp-tunnel-www() {
 
 revsocks-clients() {
 	_pushd www
-	eget -qs linux/amd64 kost/revsocks --to revsocks
+	eget -qs linux/amd64 "kost/revsocks" --to revsocks
 	chmod -x revsocks
-	eget -qs windows/amd64 kost/revsocks --to revsocks.exe
+	eget -qs windows/amd64 "kost/revsocks" --to revsocks.exe
 	chmod -x revsocks.exe
 	_popd
 }

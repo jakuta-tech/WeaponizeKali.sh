@@ -10,8 +10,8 @@ light_gray="\033[0;37m"
 dark_gray="\033[1;30m"
 magenta_bold="\033[1;35m"
 
-SITE="https://github.com/penetrarnya-tm/WeaponizeKali.sh/tree/main/00-CS"
-VERSION="0.1.5"
+SITE="https://github.com/penetrarnya-tm/WeaponizeKali.sh/tree/main/00-WeaponizeCS"
+VERSION="0.1.1"
 
 echo -e "${red_bold}                                                            (${nocolor}"
 echo -e "${red_bold} (  (                                                  (    )\ )           )${nocolor}"
@@ -55,7 +55,7 @@ fail() {
 }
 
 progress() {
-	echo -e "${magenta_bold}[WPNZKL] Installing $1${nocolor}"
+	echo -e "${magenta_bold}[WPNZCS] Installing $1${nocolor}"
 }
 
 # -----------------------------------------------------------------------------
@@ -68,6 +68,15 @@ _pushd() {
 
 _popd() {
 	popd 2>&1 > /dev/null
+}
+
+installDebPackage() {
+	pkg_name=$1
+	if ! /usr/bin/dpkg-query -f '${Status}' -W $pkg_name 2>&1 | /bin/grep "ok installed" > /dev/null; then
+		warning "$pkg_name not found, installing with apt"
+		sudo apt install $pkg_name -y
+	fi
+	success "Installed deb package(s): $pkg_name"
 }
 
 cloneRepository() {
@@ -98,15 +107,16 @@ downloadRawFile() {
 	fi
 }
 
-downloadRelease() {
-	full_repo_name=$1
-	release_name=$2
-	filename=$3
-	if curl -sSL "https://api.github.com/repos/$full_repo_name/releases/latest" | jq -r '.assets[].browser_download_url' | grep $release_name | wget -O $filename -qi -; then
-		success "Downloaded release: $filename"
-	else
-		fail "Failed to download release: $filename"
-	fi
+# -----------------------------------------------------------------------------
+# ------------------------------- Dependencies --------------------------------
+# -----------------------------------------------------------------------------
+
+_jq() {
+	installDebPackage "jq"
+}
+
+dependencies() {
+	_jq
 }
 
 # -----------------------------------------------------------------------------
@@ -412,7 +422,7 @@ SourcePoint() {
 	_pushd Profiles
 	progress "SourcePoint"
 	mkdir SourcePoint
-	eget -qs linux/amd64 Tylous/SourcePoint --to SourcePoint
+	eget -qs linux/amd64 "Tylous/SourcePoint" --to SourcePoint
 	_popd
 }
 
@@ -454,5 +464,6 @@ Profiles() {
 # -----------------------------------------------------------------------------
 
 filesystem
+dependencies
 Scripts
 Profiles
