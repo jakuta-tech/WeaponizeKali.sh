@@ -18,11 +18,6 @@ RUN rm /etc/localtime && ln -sv /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 RUN sed -i 's/http:\/\//https:\/\//g' /etc/apt/sources.list
 RUN apt update && apt upgrade -y
 
-# ssh
-RUN echo 'root:WeaponizeD0cker!' | chpasswd
-RUN echo 'PermitRootLogin yes' >> /etc/sshd_config
-RUN /etc/init.d/ssh start
-
 # exegol
 ADD sources /root/sources
 RUN chmod +x /root/sources/install.sh
@@ -30,6 +25,11 @@ RUN /root/sources/install.sh install_base
 RUN /root/sources/install.sh install_cloud_tools
 RUN /root/sources/install.sh install_clean
 RUN rm -rf /root/sources
+
+# ssh
+RUN echo 'root:WeaponizeD0cker!' | chpasswd
+RUN echo 'PermitRootLogin yes' >> /etc/sshd_config
+RUN /etc/init.d/ssh start
 
 # WeaponizeDocker
 ADD WeaponizeDocker.sh /data/WeaponizeDocker.sh
