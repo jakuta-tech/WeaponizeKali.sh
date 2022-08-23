@@ -1,7 +1,7 @@
 WeaponizeDocker.sh
 ==========
 
-Install within the [Exegol](https://github.com/ShutdownRepo/Exegol) [image](https://github.com/ShutdownRepo/Exegol-images):
+Install within an [Exegol](https://github.com/ShutdownRepo/Exegol) [container](https://github.com/ShutdownRepo/Exegol-images):
 
 ```console
 ~$ git clone https://github.com/ShutdownRepo/Exegol-images
@@ -45,7 +45,7 @@ Install within the [Exegol](https://github.com/ShutdownRepo/Exegol) [image](http
 - [x] [kubeletctl](https://github.com/cyberark/kubeletctl/releases)
 - [x] [kubesec](https://github.com/controlplaneio/kubesec/releases)
 - [ ] [kubestriker](https://github.com/vchinnipilli/kubestriker)
-- [ ] [linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)
+- [x] [linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)
 - [ ] [lynis](https://github.com/CISOfy/lynis)
 - [ ] [popeye](https://github.com/derailed/popeye)
 - [x] [masscan](https://github.com/robertdavidgraham/masscan)
