@@ -14,7 +14,7 @@ LABEL org.exegol.src_repository="https://github.com/ShutdownRepo/Exegol-images"
 RUN echo "${TAG}-${VERSION}" > /opt/.exegol_version
 
 # general
-RUN timedatectl set-timezone Europe/Moscow
+RUN rm /etc/localtime && ln -sv /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 RUN sed -i 's/http:\/\//https:\/\//g' /etc/apt/sources.list
 RUN apt update && apt upgrade -y
 
