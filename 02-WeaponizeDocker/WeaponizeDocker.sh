@@ -234,10 +234,10 @@ ffuf() {
 	installDebPackage "ffuf"
 }
 
-gitjacker() {
+gitleaks() {
 	_pushd /opt/tools
-	progress "gitjacker"
-	eget -qs linux/amd64 "liamg/gitjacker" --to gitjacker
+	progress "gitleaks"
+	eget -qs linux/amd64 "zricethezav/gitleaks" --to gitleaks
 	_popd
 }
 
@@ -354,7 +354,7 @@ tools() {
 	etcd
 	feroxbuster
 	ffuf
-	gitjacker
+	gitleaks
 	grype
 	http-server
 	httpx
@@ -374,5 +374,6 @@ tools() {
 # ----------------------------------- Main ------------------------------------
 # -----------------------------------------------------------------------------
 
+apt update
 dependencies
 tools

@@ -35,7 +35,7 @@ Install within an [Exegol](https://github.com/ShutdownRepo/Exegol) [container](h
 - [ ] [falco](https://github.com/falcosecurity/falco)
 - [x] [feroxbuster](https://github.com/epi052/feroxbuster)
 - [x] [ffuf](https://github.com/ffuf/ffuf/releases)
-- [x] [gitjacker](https://github.com/liamg/gitjacker/releases)
+- [x] [gitleaks](https://github.com/zricethezav/gitleaks)
 - [x] [grype](https://github.com/anchore/grype/releases)
 - [x] [kube-bench](https://github.com/aquasecurity/kube-bench/releases)
 - [x] [kube-hunter](https://github.com/aquasecurity/kube-hunter)
