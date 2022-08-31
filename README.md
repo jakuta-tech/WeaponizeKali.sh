@@ -146,6 +146,7 @@ Get a random name of a `.exe` or `.dll` binary:
 - [x] [LightMe](https://github.com/WazeHell/LightMe)
 - [x] [MS17-010](https://github.com/helviojunior/MS17-010)
 - [ ] [MANSPIDER](https://github.com/blacklanternsecurity/MANSPIDER)
+- [x] [Masky](https://github.com/Z4kSec/Masky)
 - [x] [Max](https://github.com/knavesec/Max)
 - [x] [MeterPwrShell](https://github.com/GetRektBoy724/MeterPwrShell/releases)
 - [x] [Neo-reGeorg](https://github.com/L-codes/Neo-reGeorg)

@@ -460,6 +460,11 @@ MS17-010() {
 	_popd
 }
 
+Masky() {
+	progress "Masky"
+	pipx install -f "git+https://github.com/Z4kSec/Masky"
+}
+
 Max() {
 	_pushd tools
 	progress "Max"
@@ -1494,6 +1499,7 @@ tools() {
 	LightMe
 	MS17-010
 	#MANSPIDER
+	Masky
 	Max
 	MeterPwrShell
 	Nim
@@ -1963,6 +1969,12 @@ PSTools() {
 	downloadRawFile "https://download.sysinternals.com/files/PSTools.zip" pstools.zip
 	unzip -q pstools.zip
 	rm Eula.txt Pstools.chm psversion.txt pstools.zip
+	_popd
+}
+
+PowerShx() {
+	_pushd www
+	eget -qs windows/amd64 "iomoath/PowerShx" --to powershx.exe
 	_popd
 }
 
