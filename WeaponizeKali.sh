@@ -297,9 +297,9 @@ CVE-2021-1675() {
 	progress "CVE-2021-1675"
 	mkdir CVE-2021-1675
 	cd CVE-2021-1675
-	cloneRepository "https://github.com/cube0x0/impacket.git"
 	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/CVE-2021-1675.py" CVE-2021-1675-MS-RPRN.py
 	downloadRawFile "https://github.com/cube0x0/CVE-2021-1675/raw/main/SharpPrintNightmare/CVE-2021-1675.py" CVE-2021-1675-MS-PAR.py
+	downloadRawFile "https://github.com/m8sec/CVE-2021-34527/raw/main/CVE-2021-34527.py" CVE-2021-1675.py
 	_popd
 }
 
@@ -830,6 +830,7 @@ donut() {
 	cd donut
 	git checkout syscalls
 	make
+	installDebPackage "mono-devel"
 	_popd
 }
 
@@ -1183,8 +1184,8 @@ pretender-tools() {
 py() {
 	FUNC=$(declare -f downloadRawFile)
 
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/assembly_to_pwsh.py' /usr/local/bin/assembly_to_pwsh.py"
-	sudo chmod +x /usr/local/bin/assembly_to_pwsh.py
+	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bin_to_pwsh.py' /usr/local/bin/bin_to_pwsh.py"
+	sudo chmod +x /usr/local/bin/bin_to_pwsh.py
 
 	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bh_get_ad_group_member.py' /usr/local/bin/bh_get_ad_group_member.py"
 	sudo chmod +x /usr/local/bin/bh_get_ad_group_member.py

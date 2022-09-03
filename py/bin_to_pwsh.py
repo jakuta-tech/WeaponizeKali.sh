@@ -18,6 +18,7 @@ def gen_random_string(length=10):
 
 parser = ArgumentParser()
 parser.add_argument('payload_string', action='store', type=str, help='path to the payload executable (optionally with arguments if ran with --donut) to be wrapped in PowerShell')
+parser.add_argument('-e', '--entrypoint', action='store', type=str, help='the Entrypoint as a comma-separated string of Namespace,Type,Method')
 parser.add_argument('-d', '--donut', action='store_true', default=False, help='create a donut (https://github.com/S4ntiagoP/donut/tree/syscalls) shellcode from the executable first')
 parser.add_argument('-na', '--no-args', action='store_true', default=False, help='pass $args to Main')
 args = parser.parse_args()
@@ -28,7 +29,7 @@ payload_path = Path(payload_string.split()[0])
 if args.donut:
     if not which('donut'):
         print('[-] Donut not found!')
-        print('[*] Install with: mkdir -p ~/tools && cd ~/tools && git clone --single-branch -b syscalls https://github.com/S4ntiagoP/donut donut && cd donut && make && sudo ln -sv `realpath donut` /usr/local/bin/donut && cd -')
+        print('[*] Install with: mkdir -p ~/tools && git clone --single-branch -b syscalls https://github.com/S4ntiagoP/donut ~/tools/donut && cd ~/tools/donut && make && sudo ln -sv `realpath donut` /usr/local/bin/donut && cd -')
         sys.exit(-1)
     if not which('mono-csc'):
         print('[-] Mono not found!')
@@ -72,6 +73,14 @@ payload_func_name = f'Invoke-{payload_path.stem}'
 if args.donut:
     os.remove(payload_path)
 
+if args.entrypoint:
+    entrypoint = args.entrypoint.split(',')
+    namespace, type, method = entrypoint
+else:
+    namespace = payload_path.stem
+    type = 'Program'
+    method = 'Main'
+
 pwsh = f'''\
 function {payload_func_name}
 {{
@@ -86,8 +95,8 @@ function {payload_func_name}
     [System.Console]::SetOut($g)
 
     $h = [Reflection.BindingFlags]"Public,NonPublic,Static"
-    $i = $e.GetType("{payload_path.stem}.Program", $h)
-    $j = $i.GetMethod("Main", $h)
+    $i = $e.GetType("{namespace}.{type}", $h)
+    $j = $i.GetMethod("{method}", $h)
     $j.Invoke($null, {arguments})
 
     [System.Console]::SetOut($f)
