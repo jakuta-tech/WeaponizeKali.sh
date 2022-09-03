@@ -213,6 +213,13 @@ dependencies() {
 # ----------------------------------- tools -----------------------------------
 # -----------------------------------------------------------------------------
 
+APIHashReplace() {
+	_pushd tools
+	progress "APIHashReplace"
+	cloneRepository "https://github.com/matthewB-huntress/APIHashReplace.git"
+	_popd
+}
+
 AutoBlue-MS17-010() {
 	_pushd tools
 	progress "AutoBlue-MS17-010"
@@ -460,7 +467,7 @@ MS17-010() {
 	_popd
 }
 
-Masky() {
+Masky-tools() {
 	progress "Masky"
 	pipx install -f "git+https://github.com/Z4kSec/Masky"
 }
@@ -1475,6 +1482,7 @@ yersina() {
 }
 
 tools() {
+	APIHashReplace
 	AutoBlue-MS17-010
 	BloodHound
 	BloodHound.py
@@ -1500,7 +1508,7 @@ tools() {
 	LightMe
 	MS17-010
 	#MANSPIDER
-	Masky
+	Masky-tools
 	Max
 	MeterPwrShell
 	Nim
@@ -1628,6 +1636,8 @@ tools() {
 exe() {
 	_pushd www
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SandboxDefender.exe" sandboxdefender.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpStrike.exe" sharpstrike.exe
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpStrikeGUI.exe" sharpstrikegui.exe
 	_popd
 }
 
@@ -1635,8 +1645,10 @@ ps1() {
 	_pushd www
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-ADCSPwn.ps1" invoke-adcspwn.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-KeeTheftSyscalls.ps1" invoke-keetheftsyscalls.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-Masky.ps1" invoke-masky.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-MirrorDump.ps1" invoke-mirrordump.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-Physmem2profit.ps1" invoke-physmem2profit.ps1
+	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-RestrictedAdmin.ps1" invoke-restrictedadmin.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-RunOF.ps1" invoke-runof.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpDcomTrigger.ps1" invoke-sharpdcomtrigger.ps1
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpEfsTrigger.ps1" invoke-sharpefstrigger.ps1

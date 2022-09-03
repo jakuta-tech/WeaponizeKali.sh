@@ -30,10 +30,11 @@ if args.donut:
     if not which('donut'):
         print('[-] Donut not found!')
         print('[*] Install with: mkdir -p ~/tools && git clone --single-branch -b syscalls https://github.com/S4ntiagoP/donut ~/tools/donut && cd ~/tools/donut && make && sudo ln -sv `realpath donut` /usr/local/bin/donut && cd -')
-        sys.exit(-1)
+        sys.exit(1)
     if not which('mono-csc'):
         print('[-] Mono not found!')
         print('[*] Install with: sudo apt install mono-devel')
+        sys.exit(1)
 
     payload_args = ' '.join(payload_string.split()[1:])
     donut_shellcode_path = f'/tmp/{gen_random_string(6)}.bin'
@@ -68,7 +69,6 @@ with open(payload_path, 'rb') as f:
     payload_compressed = deflate_stream.compress(f.read())
     payload_compressed += deflate_stream.flush()
 payload_compressed_b64 = base64.b64encode(payload_compressed).decode()
-payload_func_name = f'Invoke-{payload_path.stem}'
 
 if args.donut:
     os.remove(payload_path)
@@ -80,6 +80,8 @@ else:
     namespace = payload_path.stem
     type = 'Program'
     method = 'Main'
+
+payload_func_name = f'Invoke-{namespace}'
 
 pwsh = f'''\
 function {payload_func_name}

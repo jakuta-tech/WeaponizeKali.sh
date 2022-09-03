@@ -120,6 +120,7 @@ Get a random name of a `.exe` or `.dll` binary:
 
 ### `tools/`
 
+- [x] [APIHashReplace](https://github.com/matthewB-huntress/APIHashReplace)
 - [x] [AutoBlue-MS17-010](https://github.com/3ndG4me/AutoBlue-MS17-010)
 - [x] [Amsi-Bypass-Powershell](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell/blob/master/README.md)
 - [x] [BloodHound](https://github.com/BloodHoundAD/BloodHound/releases)
@@ -146,7 +147,7 @@ Get a random name of a `.exe` or `.dll` binary:
 - [x] [LightMe](https://github.com/WazeHell/LightMe)
 - [x] [MS17-010](https://github.com/helviojunior/MS17-010)
 - [ ] [MANSPIDER](https://github.com/blacklanternsecurity/MANSPIDER)
-- [x] [Masky](https://github.com/Z4kSec/Masky)
+- [x] [Masky](https://github.com/Z4kSec/Masky) · [PS1 (Agent)](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/ps1/Invoke-Masky.ps1)
 - [x] [Max](https://github.com/knavesec/Max)
 - [x] [MeterPwrShell](https://github.com/GetRektBoy724/MeterPwrShell/releases)
 - [x] [Neo-reGeorg](https://github.com/L-codes/Neo-reGeorg)
@@ -322,6 +323,7 @@ Get a random name of a `.exe` or `.dll` binary:
 - [x] [RawCopy](https://github.com/jschicht/RawCopy/blob/master/RawCopy64.exe)
 - [x] [RemotePotato0](https://github.com/antonioCoco/RemotePotato0/releases)
 - [x] [RoguePotato](https://github.com/antonioCoco/RoguePotato)
+- [x] [RestrictedAdmin](https://github.com/GhostPack/RestrictedAdmin) · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/ps1/Invoke-RestrictedAdmin.ps1)
 - [x] [Rubeus](https://github.com/GhostPack/Rubeus) · [EXE](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Rubeus.exe)
 - [x] [RunOF](https://github.com/nettitude/RunOF) · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/ps1/Invoke-RunOF.ps1)
 - [x] [SandboxDefender](https://github.com/plackyhacker/SandboxDefender) · [EXE](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/exe/SandboxDefender.exe)
@@ -339,6 +341,7 @@ Get a random name of a `.exe` or `.dll` binary:
 - [x] [SharpRelay](https://github.com/pkb1s/SharpRelay) · [EXE](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/exe/SharpRelay.exe)
 - [x] [SharpSCCM](https://github.com/Mayyhem/SharpSCCM) · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/ps1/Invoke-SharpSCCM.ps1)
 - [x] [SharpSecDump](https://github.com/G0ldenGunSec/SharpSecDump) · [EXE](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/SharpSecDump.exe)
+- [x] [SharpStrike](https://github.com/iomoath/SharpStrike) · [EXE (Console)](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/exe/SharpStrike.exe) · [EXE (GUI)](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/exe/SharpStrikeGUI.exe)
 - [x] [SharpSystemTriggers](https://github.com/cube0x0/SharpSystemTriggers) · [PS1](https://github.com/penetrarnya-tm/WeaponizeKali.sh/blob/main/ps1/Invoke-SharpSpoolTrigger.ps1)
 - [x] [SharpView](https://github.com/tevora-threat/SharpView) · [EXE](https://github.com/tevora-threat/SharpView/blob/master/Compiled/SharpView.exe)
 - [x] [SharpWMI](https://github.com/GhostPack/SharpWMI) · [EXE](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.0_Any/SharpWMI.exe)
