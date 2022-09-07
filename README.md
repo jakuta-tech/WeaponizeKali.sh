@@ -123,7 +123,7 @@ Get a random name of a `.exe` or `.dll` binary:
 - [x] [APIHashReplace](https://github.com/matthewB-huntress/APIHashReplace)
 - [x] [AutoBlue-MS17-010](https://github.com/3ndG4me/AutoBlue-MS17-010)
 - [x] [Amsi-Bypass-Powershell](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell/blob/master/README.md)
-- [x] [BloodHound](https://github.com/BloodHoundAD/BloodHound/releases)
+- [x] [BloodHound](https://github.com/BloodHoundAD/BloodHound/releases) · [FORK](https://github.com/ly4k/BloodHound/releases)
 - [x] [BloodHound.py](https://github.com/fox-it/BloodHound.py)
 - [x] [CVE-2019-1040-scanner](https://github.com/fox-it/cve-2019-1040-scanner)
 - [x] [CVE-2020-1472-checker](https://github.com/SecuraBV/CVE-2020-1472)

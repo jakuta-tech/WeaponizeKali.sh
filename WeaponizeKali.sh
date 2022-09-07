@@ -231,7 +231,7 @@ BloodHound() {
 	_pushd tools
 	progress "BloodHound"
 	installDebPackage "neo4j"
-	downloadRelease "BloodHoundAD/BloodHound" BloodHound-linux-x64 BloodHound.zip
+	downloadRelease "ly4k/BloodHound" BloodHound-linux-x64 BloodHound.zip
 	unzip -q BloodHound.zip
 	mv BloodHound-linux-x64 BloodHound
 	rm BloodHound.zip
@@ -253,16 +253,16 @@ from pathlib import Path
 
 merged, dups = {'queries': []}, set()
 for jf in sorted((Path('/tmp')).glob('customqueries*.json')):
-	with open(jf, 'r') as f:
-		for query in json.load(f)['queries']:
-			if 'queryList' in query.keys():
-				qt = tuple(q['query'] for q in query['queryList'])
-				if qt not in dups:
-					merged['queries'].append(query)
-					dups.add(qt)
+    with open(jf, 'r') as f:
+        for query in json.load(f)['queries']:
+            if 'queryList' in query.keys():
+                qt = tuple(q['query'] for q in query['queryList'])
+                if qt not in dups:
+                    merged['queries'].append(query)
+                    dups.add(qt)
 
 with open(Path.home() / '.config' / 'bloodhound' / 'customqueries.json', 'w') as f:
-	json.dump(merged, f, indent=4)
+    json.dump(merged, f, indent=4)
 
 EOT
 	rm /tmp/customqueries*.json
