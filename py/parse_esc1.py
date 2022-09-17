@@ -6,6 +6,8 @@ import glob
 with open(glob.glob('[0-9]*_Certipy.json')[0], 'r', encoding='utf-8-sig') as f:
 	templates = json.load(f)['Certificate Templates']
 
+print('"Template Name","Enabled","Requires Manager Approval","Dangerous roups"')
+
 data = []
 for templ in templates.values():
 	if 'Enrollee Supplies Subject' in templ.keys() and templ['Enrollee Supplies Subject']:
@@ -23,10 +25,9 @@ for templ in templates.values():
 			if groups:
 				groups = ','.join(groups)
 				data.append([template_name, enabled, manager_approval, groups])
-				print('"Template Name", "Enabled", "Dangerous roups", "Requires Manager Approval"')
 				print(f'"{template_name}","{enabled}","{manager_approval}","{groups}"')
 
-header = ['Template Name', 'Enabled', 'Dangerous roups', 'Requires Manager Approval']
+header = ['Template Name', 'Enabled', 'Requires Manager Approval', 'Dangerous roups']
 with open('esc1.csv', 'w') as f:
 	writer = csv.writer(f, quoting=csv.QUOTE_ALL)
 	writer.writerow(header)

@@ -197,6 +197,13 @@ _dotnet() {
 	curl -sSL "https://dot.net/v1/dotnet-install.sh" | bash /dev/stdin -Channel 2.1
 }
 
+_self() {
+	_pushd tools
+	progress "WeaponizeKali.sh"
+	cloneRepository "https://github.com/penetrarnya-tm/WeaponizeKali.sh.git"
+	_popd
+}
+
 dependencies() {
 	_jq
 	_eget
@@ -207,6 +214,7 @@ dependencies() {
 	_npm
 	_snap
 	_dotnet
+	_self
 }
 
 # -----------------------------------------------------------------------------
@@ -336,7 +344,7 @@ CrackMapExec() {
 	progress "CrackMapExec"
 	pipx install -f "git+https://github.com/Porchetta-Industries/CrackMapExec.git"
 	mkdir -p ~/.cme
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/conf/cme.conf" ~/.cme/cme.conf
+	cp "~/tools/WeaponizeKali.sh/conf/cme.conf" ~/.cme/cme.conf
 }
 
 DFSCoerce() {
@@ -388,6 +396,7 @@ Ebowla() {
 	installDebPackage "golang mingw-w64 wine"
 	python2 -m pip install -U configobj pyparsing pycrypto
 	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/conf/genetic.config" genetic.config
+	cp "~/tools/WeaponizeKali.sh/conf/genetic.config" genetic.config
 	_popd
 }
 
@@ -669,6 +678,15 @@ Shhhloader() {
 	_popd
 }
 
+SilentHound() {
+	_pushd tools
+	progress "SilentHound"
+	cloneRepository "https://github.com/snovvcrash/SilentHound.git"
+	cd SilentHound
+	python3 -m pip install -U -r requirements.txt
+	_popd
+}
+
 Sliver() {
 	progress "Sliver"
 	curl "https://sliver.sh/install" | sudo bash
@@ -764,8 +782,8 @@ bettercap() {
 	cd bettercap
 	eget -t v2.31.1 -qs linux/amd64 "bettercap/bettercap"
 	sudo ./bettercap -eval "caplets.update; ui.update; q"
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cap/arpspoof.cap" arpspoof.cap
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/cap/wsus.cap" wsus.cap
+	cp "~/tools/WeaponizeKali.sh/cap/arpspoof.cap" arpspoof.cap
+	cp "~/tools/WeaponizeKali.sh/cap/wsus.cap" wsus.cap
 	_popd
 }
 
@@ -865,7 +883,7 @@ enum4linux-ng() {
 evil-winrm() {
 	_pushd tools
 	progress "evil-winrm"
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/evil-winrm.sh" evil-winrm.sh
+	cp "~/tools/WeaponizeKali.sh/misc/evil-winrm.sh" evil-winrm.sh
 	chmod +x evil-winrm.sh
 	_popd
 }
@@ -908,7 +926,7 @@ go-windapsearch() {
 	progress "go-windapsearch"
 	mkdir go-windapsearch
 	cd go-windapsearch
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/elf/windapsearch" windapsearch
+	cp "~/tools/WeaponizeKali.sh/elf/windapsearch" windapsearch
 	chmod +x windapsearch
 	_popd
 }
@@ -1189,28 +1207,13 @@ pretender-tools() {
 }
 
 py() {
-	FUNC=$(declare -f downloadRawFile)
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bin_to_pwsh.py' /usr/local/bin/bin_to_pwsh.py"
-	sudo chmod +x /usr/local/bin/bin_to_pwsh.py
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bh_get_ad_group_member.py' /usr/local/bin/bh_get_ad_group_member.py"
-	sudo chmod +x /usr/local/bin/bh_get_ad_group_member.py
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bh_get_ad_user_memberof.py' /usr/local/bin/bh_get_ad_user_memberof.py"
-	sudo chmod +x /usr/local/bin/bh_get_ad_user_memberof.py
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bh_get_domain_trust_mapping.py' /usr/local/bin/bh_get_domain_trust_mapping.py"
-	sudo chmod +x /usr/local/bin/bh_get_domain_trust_mapping.py
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/bloodhound-print.py' /usr/local/bin/bloodhound-print.py"
-	sudo chmod +x /usr/local/bin/bloodhound-print.py
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/parse_esc1.py' /usr/local/bin/parse_esc1.py"
-	sudo chmod +x /usr/local/bin/parse_esc1.py
-
-	sudo bash -c "$FUNC; downloadRawFile 'https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/py/cred_stasher.py' /usr/local/bin/cred_stasher.py"
-	sudo chmod +x /usr/local/bin/cred_stasher.py
+	sudo ln -sv `realpath "~/tools/WeaponizeKali.sh/py/bin_to_pwsh.py"` /usr/local/bin/bin_to_pwsh.py
+	sudo ln -sv `realpath "~/tools/WeaponizeKali.sh/py/bh_get_ad_group_member.py"` /usr/local/bin/bh_get_ad_group_member.py
+	sudo ln -sv `realpath "~/tools/WeaponizeKali.sh/py/bh_get_ad_user_memberof.py"` /usr/local/bin/bh_get_ad_user_memberof.py
+	sudo ln -sv `realpath "~/tools/WeaponizeKali.sh/py/bh_get_domain_trust_mapping.py"` /usr/local/bin/bh_get_domain_trust_mapping.py
+	sudo ln -sv `realpath "~/tools/WeaponizeKali.sh/py/bloodhound-print.py"` /usr/local/bin/bloodhound-print.py
+	sudo ln -sv `realpath "~/tools/WeaponizeKali.sh/py/parse_esc1.py"` /usr/local/bin/parse_esc1.py
+	sudo ln -sv `realpath "~/tools/WeaponizeKali.sh/py/cred_stasher.py"` /usr/local/bin/cred_stasher.py
 }
 
 pywsus() {
@@ -1532,6 +1535,7 @@ tools() {
 	ShellPop
 	WebclientServiceScanner
 	Shhhloader
+	SilentHound
 	Sliver
 	TrustVisualizer
 	Windows-Exploit-Suggester
@@ -1633,39 +1637,6 @@ tools() {
 # ------------------------------------ www ------------------------------------
 # -----------------------------------------------------------------------------
 
-exe() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SandboxDefender.exe" sandboxdefender.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpStrike.exe" sharpstrike.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/SharpStrikeGUI.exe" sharpstrikegui.exe
-	_popd
-}
-
-ps1() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-ADCSPwn.ps1" invoke-adcspwn.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-KeeTheftSyscalls.ps1" invoke-keetheftsyscalls.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-Masky.ps1" invoke-masky.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-MirrorDump.ps1" invoke-mirrordump.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-Physmem2profit.ps1" invoke-physmem2profit.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-RestrictedAdmin.ps1" invoke-restrictedadmin.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-RunOF.ps1" invoke-runof.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpDcomTrigger.ps1" invoke-sharpdcomtrigger.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpEfsTrigger.ps1" invoke-sharpefstrigger.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpRdpThiefInjector.ps1" invoke-sharprdpthiefinjector.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpSCCM.ps1" invoke-sharpsccm.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpSpoolTrigger.ps1" invoke-sharpspooltrigger.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-TokenDuplicator.ps1" invoke-tokenduplicator.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-VeraCryptThiefInjector.ps1" invoke-veracryptthiefinjector.ps1
-	_popd
-}
-
-sys() {
-	_pushd www
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/sys/WinDivert64.sys" windivert64.sys
-	_popd
-}
-
 ADRecon() {
 	_pushd www
 	downloadRawFile "https://github.com/adrecon/ADRecon/raw/master/ADRecon.ps1" adrecon.ps1
@@ -1735,6 +1706,14 @@ Discover-PSMSSQLServers() {
 DomainPasswordSpray() {
 	_pushd www
 	downloadRawFile "https://github.com/dafthack/DomainPasswordSpray/raw/master/DomainPasswordSpray.ps1" domainpasswordspray.ps1
+	_popd
+}
+
+Get-RdpLogonEvent() {
+	_pushd www
+	cloneRepository "https://gist.github.com/awakecoding/5fda938a5fd2d29ebffb31eb023fe51c.git" /tmp/Get-RdpLogonEvent
+	mv /tmp/Get-RdpLogonEvent/Get-RdpLogonEvent.ps1 get-rdplogonevent.ps1
+	rm -rf /tmp/Get-RdpLogonEvent
 	_popd
 }
 
@@ -1910,6 +1889,14 @@ PEASS() {
 	installDebPackage "peass"
 }
 
+PSTools() {
+	_pushd www
+	downloadRawFile "https://download.sysinternals.com/files/PSTools.zip" pstools.zip
+	unzip -q pstools.zip
+	rm Eula.txt Pstools.chm psversion.txt pstools.zip
+	_popd
+}
+
 PingCastle() {
 	_pushd www
 	downloadRelease "vletoux/pingcastle" PingCastle.*.zip pingcastle.zip
@@ -1919,7 +1906,7 @@ PingCastle() {
 PowerShellArmoury() {
 	_pushd www
 	downloadRawFile "https://github.com/cfalta/PowerShellArmoury/raw/master/New-PSArmoury.ps1" new-psarmoury.ps1
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/misc/PSArmoury.json" psarmoury.json
+	cp "~/tools/WeaponizeKali.sh/conf/PSArmoury.json" psarmoury.json
 	_popd
 }
 
@@ -1977,25 +1964,15 @@ PrivescCheck() {
 	_popd
 }
 
-PSTools() {
-	_pushd www
-	downloadRawFile "https://download.sysinternals.com/files/PSTools.zip" pstools.zip
-	unzip -q pstools.zip
-	rm Eula.txt Pstools.chm psversion.txt pstools.zip
-	_popd
-}
-
 PowerShx() {
 	_pushd www
 	eget -qs windows/amd64 "iomoath/PowerShx" --to powershx.exe
 	_popd
 }
 
-ProcDump() {
+PwnKit() {
 	_pushd www
-	downloadRawFile "https://download.sysinternals.com/files/Procdump.zip" procdump.zip
-	unzip -q procdump.zip
-	rm Eula.txt procdump64a.exe procdump.zip
+	downloadRawFile "https://github.com/ly4k/PwnKit/raw/main/PwnKit" pwnkit
 	_popd
 }
 
@@ -2086,7 +2063,6 @@ SharpLAPS() {
 SharpNamedPipePTH() {
 	_pushd www
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpNamedPipePTH.exe" sharpnamedpipepth.exe
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/ps1/Invoke-SharpNamedPipePTH.ps1" invoke-sharpnamedpipepth.ps1
 	_popd
 }
 
@@ -2186,7 +2162,6 @@ chisel-clients() {
 	mv chisel.exe ../chisel.exe
 	cd ..
 	rm -rf tmp1 tmp2
-	downloadRawFile "https://github.com/penetrarnya-tm/WeaponizeKali.sh/raw/main/exe/chisel-garble.exe" chisel-garble.exe
 	downloadRawFile "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_Any/SharpChisel.exe" sharpchisel.exe
 	_popd
 }
@@ -2313,9 +2288,6 @@ suid3num.py() {
 }
 
 www() {
-	exe
-	ps1
-	sys
 	ADRecon
 	ADSearch
 	ASREPRoast
@@ -2327,6 +2299,7 @@ www() {
 	Discover-PSMSExchangeServers
 	Discover-PSMSSQLServers
 	DomainPasswordSpray
+	Get-RdpLogonEvent
 	#Grouper2
 	HandleKatz
 	#HiveNightmare
@@ -2353,6 +2326,7 @@ www() {
 	OffensivePythonPipeline
 	Out-EncryptedScript
 	PEASS
+	PSTools
 	PingCastle
 	PowerShellArmoury
 	PowerUp
@@ -2364,8 +2338,7 @@ www() {
 	Powermad
 	PrintSpoofer
 	PrivescCheck
-	PSTools
-	ProcDump
+	PwnKit
 	Python-2.7.18
 	RawCopy
 	RemotePotato0
